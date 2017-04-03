@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test page</title>
+
+  <script type="text/javascript" src="./vendor.js"></script>
+</head>
+<body>
+
+<script>
+  
+  $(document).ready(function(){
+
+    // see if we really can read/write sessionStorage
+    if(Modernizr.sessionstorage === true){
+      console.log('Modernizr says sessionStorage is available, trying to read...');
+
+      var output = sessionStorage.getItem('b2b-oc.sessionStorageTest');
+
+      if(sessionStorage.getItem('b2b-oc.sessionStorageTest') !== 'Lo and behold, localStorage says: Lorem ipsum dolor amet.'){
+        console.log('Could not read sessionStorage!!!!1!!');
+        console.log(sessionStorage.getItem('b2b-oc.sessionStorageTest'));
+        console.log(typeof(sessionStorage.getItem('b2b-oc.sessionStorageTest')));
+      }
+      else {
+        $('#output').text(output);
+      }
+    }
+    else {
+      console.log('Modernizr says sessionstorage is NOT available.');
+      $('#output').text('no sessionStorage for you!');
+    }
+  });
+
+</script>
+  
+<h1>OUTPUT</h1>
+<div id="output" style="width: 90%; border: 1px solid #000;">...</div>
+
+<a href="https://nilsel.github.io/lstest/">Go to another domain</a>
+
+<br>
+<a href="./storage-write.html">Write to sessionStorage</a>
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test page</title>
+
+  <script type="text/javascript" src="./vendor.js"></script>
+</head>
+<body>
+
+<script>
+  
+  $(document).ready(function(){
+
+    // see if we really can read/write sessionStorage
+    if(Modernizr.sessionstorage === true){
+      console.log('Modernizr says sessionStorage is available, testing...');
+
+      console.log('writing to sessionStorage');
+      sessionStorage.setItem('b2b-oc.sessionStorageTest', 'Lo and behold, localStorage says: Lorem ipsum dolor amet.');
+      
+
+      console.log('trying to read sessionStorage...');
+
+      var output = sessionStorage.getItem('b2b-oc.sessionStorageTest');
+
+      setTimeout(function(){
+
+        if(sessionStorage.getItem('b2b-oc.sessionStorageTest') === 'Lo and behold, localStorage says: Lorem ipsum dolor amet.'){
+          $('#output').text(output);
+          console.log('Could not read sessionStorage!!!!1!!');
+        }
+
+      }, 2000);
+    }
+    else {
+      console.log('Modernizr says sessionstorage is NOT available.');
+      $('#output').text('no sessionStorage for you!');
+    }
+  });
+
+</script>
+  
+<h1>OUTPUT</h1>
+<div id="output" style="width: 90%; border: 1px solid #000;">...</div>
+
+<a href="./storage-read.html">Read from sessionStorage on another page</a>
+
+</body>
+</html>
