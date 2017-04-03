@@ -26,7 +26,7 @@
 
       setTimeout(function(){
 
-        if(sessionStorage.getItem('b2b-oc.sessionStorageTest') === 'Lo and behold, localStorage says: Lorem ipsum dolor amet.'){
+        if(sessionStorage.getItem('b2b-oc.sessionStorageTest') !== 'Lo and behold, localStorage says: Lorem ipsum dolor amet.'){
           $('#output').text(output);
           console.log('Could not read sessionStorage!!!!1!!');
         }
